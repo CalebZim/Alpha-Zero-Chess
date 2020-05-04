@@ -1,38 +1,44 @@
+body {
+  background: rgb(166,177,196);
+  background: linear-gradient(90deg, rgba(166,177,196,1) 0%, rgba(171,171,171,1) 100%);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Jost|Quicksand&display=swap');
+/* font-family: 'Quicksand', sans-serif;
+font-family: 'Jost', sans-serif; */
+
 .App {
   text-align: center;
+  color: rgb(15, 22, 51);
+  font-family: 'Quicksand', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home {
+  font-size: 5rem;
+  font-family: 'Quicksand', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home-foot {
+  font-size: 2rem;
+  font-family: 'Jost', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.about {
+  font-size: 3rem;
+  padding: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.join {
+  color: rgb(121, 121, 121);
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer {
+  font-size: 1rem;
+}
+
+.link {
+  color: rgb(121, 121, 121);
+  text-decoration: none;
+  font-size: 2rem;
 }
