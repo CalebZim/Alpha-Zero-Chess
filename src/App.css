@@ -42,3 +42,8 @@ font-family: 'Jost', sans-serif; */
   text-decoration: none;
   font-size: 2rem;
 }
+
+.members {
+  font-size: 1rem;
+  color: rgb(87, 92, 114);
+}

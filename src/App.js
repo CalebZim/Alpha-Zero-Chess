@@ -1,8 +1,9 @@
 import React from 'react';
-import Home from './Home'
-import About from './About'
-import Footer from './Footer'
-import Matches from './matches'
+import Home from './Home';
+import About from './About';
+import Footer from './Footer';
+import Matches from './matches';
+import Members from './Member/Members';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
      <Home />
     <About />
     <Matches />
+    <Members /><br />
     <Footer />
     </div>
   );
