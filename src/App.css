@@ -47,3 +47,8 @@ font-family: 'Jost', sans-serif; */
   font-size: 1rem;
   color: rgb(87, 92, 114);
 }
+
+.card{
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+}

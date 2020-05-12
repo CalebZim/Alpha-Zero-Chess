@@ -48,7 +48,8 @@ class App extends React.Component {
         .then(response => response.json())
         .then(parsedJSON => parsedJSON.weekly.map(user => (
             {
-                name: `${user.username}`
+                name: `${user.username}`,
+                date:`${user.joined}`
             }
         )))
         .then(contacts => this.setState({
@@ -78,7 +79,8 @@ class App extends React.Component {
                         {
                             !isLoading && contacts.length > 0 ? contacts.map(contact => {
                                 const {name} = contact;
-                                return <Collapsible title={name}>
+                                const {date} = Number;
+                                return <Collapsible title={name} date={date}>
                                     
                                 </Collapsible>
                             }) : null
