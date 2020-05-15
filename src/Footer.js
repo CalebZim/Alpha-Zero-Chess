@@ -1,8 +1,9 @@
 import React from 'react'
+import Zoom from 'react-reveal/Fade'
 
 function Footer() {
     return (
-        <div className='footer'>Copy-right 2020 Caleb Zimmerman aka cdzim     V1.1</div>
+        <div className='footer'><Zoom>Copy-right 2020 Caleb Zimmerman aka cdzim     V1.1</Zoom></div>
     );
 }
 

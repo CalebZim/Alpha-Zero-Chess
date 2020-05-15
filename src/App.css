@@ -52,3 +52,9 @@ font-family: 'Jost', sans-serif; */
   background: rgb(255,255,255);
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
 }
+
+.nav {
+  background: rgb(91,135,180);
+  background: linear-gradient(90deg, rgba(91,135,180,1) 0%, rgba(113,135,164,1) 100%);
+  text-shadow: 2px 2px 5px rgb(78, 89, 150);
+}
