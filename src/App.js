@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Home from './Home';
 import Footer from './Footer';
-import Matches from './matches';
+import Matches from './Matches/Matches';
 import Members from './Member/Members';
 import Nav from './Nav'
 import './App.css';

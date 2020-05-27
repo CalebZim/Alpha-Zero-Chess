@@ -1,6 +1,7 @@
 body {
   background: rgb(166,177,196);
   background: linear-gradient(90deg, rgba(166,177,196,1) 0%, rgba(171,171,171,1) 100%);
+  text-align: center;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Jost|Quicksand&display=swap');
@@ -44,8 +45,8 @@ font-family: 'Jost', sans-serif; */
 }
 
 .members {
-  font-size: 1rem;
   color: rgb(87, 92, 114);
+  text-decoration: none;
 }
 
 .card{
@@ -57,4 +58,5 @@ font-family: 'Jost', sans-serif; */
   background: rgb(91,135,180);
   background: linear-gradient(90deg, rgba(91,135,180,1) 0%, rgba(113,135,164,1) 100%);
   text-shadow: 2px 2px 5px rgb(78, 89, 150);
+
 }

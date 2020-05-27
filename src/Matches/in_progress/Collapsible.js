@@ -19,11 +19,18 @@ class Collapsible extends React.Component {
         })
     }
     render(){
-        const {title} = this.props;
+        const {title, time_class} = this.props;
         return (
-            <a href={`https://www.chess.com/member/${title}`} className='members' target='blank'><article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+        <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+            
+                <div class="tc">
                     <h1 class="f4">{title}</h1>
-            </article></a>
+                    <hr class="mw3 bb bw1 b--black-10" />
+                </div>
+                <p class="lh-copy measure center f6 black-70">
+                {`Time Class: ${time_class}`}
+                </p>
+            </article>
         )
     }
 
@@ -31,7 +38,9 @@ class Collapsible extends React.Component {
 
 Collapsible.propTypes = {
     title: PropTypes.string,
-    date: PropTypes.number,
+    time_class: PropTypes.string,
 };
 
 export default Collapsible;
+
+// 7
