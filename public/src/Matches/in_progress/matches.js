@@ -7,14 +7,14 @@ class App extends React.Component {
         super(props);
         this.state = {
             isLoading: true,
-            contacts: []
+            matches: []
         }
     }
 
     
     componentWillMount() {
-        localStorage.getItem('contacts') && this.setState({
-            contacts: JSON.parse(localStorage.getItem('contacts')),
+        localStorage.getItem('matches') && this.setState({
+            matches: JSON.parse(localStorage.getItem('matches')),
             isLoading: false
         })
     }
@@ -22,11 +22,11 @@ class App extends React.Component {
 
     componentDidMount(){
 
-        const date = localStorage.getItem('contactsDate');
-        const contactsDate = date && new Date(parseInt(date));
+        const date = localStorage.getItem('matchesDate');
+        const matchesDate = date && new Date(parseInt(date));
         const now = new Date();
 
-        const dataAge = Math.round((now - contactsDate) / (1000 * 60)); // in minutes
+        const dataAge = Math.round((now - matchesDate) / (1000 * 60)); // in minutes
         const tooOld = dataAge >= 1;
 
         if(tooOld){
@@ -41,19 +41,20 @@ class App extends React.Component {
 
         this.setState({
             isLoading: true,
-            contacts: []
+            matches: []
         })
 
-        fetch('https://api.chess.com/pub/club/alpha-zero/members')
+        fetch('https://api.chess.com/pub/club/alpha-zero/matches')
         .then(response => response.json())
-        .then(parsedJSON => parsedJSON.weekly.map(user => (
+        .then(parsedJSON => parsedJSON.in_progress.map(match => (
             {
-                name: `${user.username}`,
-                date:`${user.joined}`
+                name: `${match.name}`,
+                url: `${match.id}`,
+                time_class: `${match.time_class}`,
             }
         )))
-        .then(contacts => this.setState({
-            contacts,
+        .then(matches => this.setState({
+            matches,
             isLoading: false
         }))
         .catch(error => console.log('parsing failed', error))
@@ -61,34 +62,31 @@ class App extends React.Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        localStorage.setItem('contacts', JSON.stringify(nextState.contacts));
-        localStorage.setItem('contactsDate', Date.now());
+        localStorage.setItem('matches', JSON.stringify(nextState.matches));
+        localStorage.setItem('matchesDate', Date.now());
     }
     
 
     render() {
-        const {isLoading, contacts} = this.state;
+        const {isLoading, matches} = this.state;
 
         return (
             <div>
                 <header>
-                    <h1><br /><br /><br />Members who were active in the club the last 7 days...</h1>
+                    <h1>Matches in Progress</h1>
                 </header>
                 <div className={`content ${isLoading ? 'is-loading' : ''}`}>
                     <div className="panel-group">
                         {
-                            !isLoading && contacts.length > 0 ? contacts.map(contact => {
+                            !isLoading && matches.length > 0 ? matches.map(contact => {
                                 const {name} = contact;
-                                const {date} = Number;
-                                return <Collapsible title={name} date={date}>
-                                    
+                                const {time_class} = contact;
+                                return <Collapsible title={name} time_class={time_class}>
                                 </Collapsible>
                             }) : null
                         }
                     </div>
-                    <div className="loader">
-                        <div className="icon"></div>
-                    </div>
+                    If nothing shows, look <a href='https://www.chess.com/clubs/matches/alpha-zero' className='members' target='blank'>HERE. </a>
                 </div>
             </div>
         );

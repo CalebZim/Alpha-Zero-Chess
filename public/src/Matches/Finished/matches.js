@@ -7,14 +7,14 @@ class App extends React.Component {
         super(props);
         this.state = {
             isLoading: true,
-            contacts: []
+            match: []
         }
     }
 
     
     componentWillMount() {
-        localStorage.getItem('contacts') && this.setState({
-            contacts: JSON.parse(localStorage.getItem('contacts')),
+        localStorage.getItem('match') && this.setState({
+            match: JSON.parse(localStorage.getItem('match')),
             isLoading: false
         })
     }
@@ -22,11 +22,11 @@ class App extends React.Component {
 
     componentDidMount(){
 
-        const date = localStorage.getItem('contactsDate');
-        const contactsDate = date && new Date(parseInt(date));
+        const date = localStorage.getItem('matchDate');
+        const matchDate = date && new Date(parseInt(date));
         const now = new Date();
 
-        const dataAge = Math.round((now - contactsDate) / (1000 * 60)); // in minutes
+        const dataAge = Math.round((now - matchDate) / (1000 * 60)); // in minutes
         const tooOld = dataAge >= 1;
 
         if(tooOld){
@@ -41,19 +41,20 @@ class App extends React.Component {
 
         this.setState({
             isLoading: true,
-            contacts: []
+            match: []
         })
 
-        fetch('https://api.chess.com/pub/club/alpha-zero/members')
+        fetch('https://api.chess.com/pub/club/alpha-zero/matches')
         .then(response => response.json())
-        .then(parsedJSON => parsedJSON.weekly.map(user => (
+        .then(parsedJSON => parsedJSON.finished.map(match => (
             {
-                name: `${user.username}`,
-                date:`${user.joined}`
+                name: `${match.name}`,
+                time_class: `${match.time_class}`,
+                result: `${match.result}`
             }
         )))
-        .then(contacts => this.setState({
-            contacts,
+        .then(match => this.setState({
+            match,
             isLoading: false
         }))
         .catch(error => console.log('parsing failed', error))
@@ -61,33 +62,33 @@ class App extends React.Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        localStorage.setItem('contacts', JSON.stringify(nextState.contacts));
-        localStorage.setItem('contactsDate', Date.now());
+        localStorage.setItem('match', JSON.stringify(nextState.match));
+        localStorage.setItem('matchDate', Date.now());
     }
     
 
     render() {
-        const {isLoading, contacts} = this.state;
+        const {isLoading, match} = this.state;
 
         return (
             <div>
                 <header>
-                    <h1><br /><br /><br />Members who were active in the club the last 7 days...</h1>
+                    <h1>Finished Matches</h1>
                 </header>
                 <div className={`content ${isLoading ? 'is-loading' : ''}`}>
                     <div className="panel-group">
                         {
-                            !isLoading && contacts.length > 0 ? contacts.map(contact => {
+                            !isLoading && match.length > 0 ? match.map(contact => {
                                 const {name} = contact;
-                                const {date} = Number;
-                                return <Collapsible title={name} date={date}>
-                                    
+                                const {time_class} = contact;
+                                const {result} = contact;
+                                return <Collapsible title={name} time_class={time_class} result={result}>
                                 </Collapsible>
                             }) : null
                         }
                     </div>
                     <div className="loader">
-                        <div className="icon"></div>
+                    If nothing shows, look <a href='https://www.chess.com/clubs/matches/alpha-zero' className='members' target='blank'>HERE </a>
                     </div>
                 </div>
             </div>
