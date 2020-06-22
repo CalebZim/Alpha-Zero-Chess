@@ -42,7 +42,7 @@ const NavBar = styled(animated.nav)`
   top: 0;
   left: 0;
   background: rgb(37,47,69);
-    background: linear-gradient(90deg, rgba(37,47,69,1) 0%, rgba(40,51,74,1) 100%);
+  background: linear-gradient(90deg, rgba(37,47,69,1) 0%, rgba(40,51,74,1) 100%);
   z-index: 1;
   font-size: 1.4rem;
 `;
