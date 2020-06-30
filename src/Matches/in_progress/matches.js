@@ -51,6 +51,7 @@ class App extends React.Component {
                 name: `${match.name}`,
                 url: `${match.id}`,
                 time_class: `${match.time_class}`,
+                id: `match.@id`
             }
         )))
         .then(matches => this.setState({

@@ -19,7 +19,7 @@ class Collapsible extends React.Component {
         })
     }
     render(){
-        const {title, time_class} = this.props;
+        const {title, time_class, id} = this.props;
         return (
         <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
             
@@ -29,6 +29,7 @@ class Collapsible extends React.Component {
                 </div>
                 <p class="lh-copy measure center f6 black-70">
                 {`Time Class: ${time_class}`}
+                {id}
                 </p>
             </article>
         )
