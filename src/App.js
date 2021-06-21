@@ -9,7 +9,6 @@ import Footer from './Footer';
 import Matches from './Matches/Matches';
 import Members from './Member/Members';
 import Nav from './nav/Nav.jsx'
-import Form from './form'
 import './App.css';
 
 
@@ -22,7 +21,6 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/Members' component={Members} />
         <Route exact path='/Matches' component={Matches} />
-        <Route exact path='/form' component={Form} />
       </Switch>
     </Router>
     <Footer />
