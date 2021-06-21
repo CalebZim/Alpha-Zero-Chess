@@ -11,6 +11,9 @@ function Form() {
                 <p>
                     <label>Your Email: <input type="email" name="email" /></label>
             </p>
+            <p>
+                <button type="submit">Send</button>
+            </p>
             </form>
         </div>
     )
