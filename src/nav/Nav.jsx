@@ -17,7 +17,6 @@ const Navbar = (props) => {
   });
 
   return (
-    <>
       <NavBar style={barAnimation}>
         <FlexContainer>
           <NavLinks style={linkAnimation}>
@@ -27,10 +26,10 @@ const Navbar = (props) => {
             Home</Link>
             <Link to='/matches' className="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 b--white-20 br1">Matches</Link>
             <Link to='/members' className="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 b--white-20 br1">Members</Link>
+            <Link to='/form' className="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 b--white-20 br1">form</Link>
           </NavLinks>
         </FlexContainer>
       </NavBar>
-   </>
   )
 }
 
